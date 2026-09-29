@@ -1,541 +1,887 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HARX SMP | Minecraft</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HARX SMP — nowoczesny serwer Minecraft. Dołącz do społeczności i rozpocznij swoją przygodę.">
+  <title>HARX SMP — Oficjalna strona</title>
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #070707;
-    color: white;
-    overflow-x: hidden;
-}
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background:
-        radial-gradient(circle at 50% 10%, rgba(255, 196, 0, .12), transparent 35%),
-        radial-gradient(circle at 10% 80%, rgba(255, 130, 0, .08), transparent 30%);
-    pointer-events: none;
-    z-index: -1;
-}
-
-/* NAVBAR */
-
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 70px;
-    background: rgba(5,5,5,.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255,196,0,.18);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 7%;
-    z-index: 1000;
-}
-
-.logo {
-    font-size: 25px;
-    font-weight: 900;
-    letter-spacing: 2px;
-}
-
-.logo span {
-    color: #ffc400;
-}
-
-nav a {
-    color: #aaa;
-    text-decoration: none;
-    margin-left: 22px;
-    font-weight: bold;
-    transition: .2s;
-}
-
-nav a:hover {
-    color: #ffc400;
-}
-
-/* HERO */
-
-.hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 110px 20px 60px;
-}
-
-.hero-content {
-    max-width: 900px;
-}
-
-.badge {
-    display: inline-block;
-    border: 1px solid rgba(255,196,0,.4);
-    background: rgba(255,196,0,.08);
-    color: #ffc400;
-    padding: 9px 18px;
-    border-radius: 30px;
-    margin-bottom: 25px;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-h1 {
-    font-size: clamp(65px, 14vw, 150px);
-    line-height: .88;
-    font-weight: 1000;
-    letter-spacing: -6px;
-    text-shadow: 0 0 25px rgba(255,196,0,.2);
-}
-
-h1 span {
-    color: #ffc400;
-}
-
-.hero p {
-    color: #999;
-    font-size: 20px;
-    margin: 30px auto;
-    max-width: 650px;
-    line-height: 1.6;
-}
-
-.buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.btn {
-    display: inline-block;
-    padding: 15px 28px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 800;
-    transition: .25s;
-    cursor: pointer;
-    border: none;
-    font-size: 15px;
-}
-
-.btn-main {
-    background: #ffc400;
-    color: #080808;
-}
-
-.btn-main:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 30px rgba(255,196,0,.3);
-}
-
-.btn-dark {
-    background: #151515;
-    color: white;
-    border: 1px solid #292929;
-}
-
-.btn-dark:hover {
-    border-color: #ffc400;
-    transform: translateY(-3px);
-}
-
-/* SEKCJE */
-
-section {
-    padding: 100px 7%;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 55px;
-}
-
-.section-title h2 {
-    font-size: 42px;
-}
-
-.section-title span {
-    color: #ffc400;
-}
-
-.section-title p {
-    color: #777;
-    margin-top: 10px;
-}
-
-/* IP */
-
-.ip-box {
-    max-width: 700px;
-    margin: auto;
-    background: #101010;
-    border: 1px solid #252525;
-    border-radius: 18px;
-    padding: 30px;
-    text-align: center;
-}
-
-.ip {
-    font-size: 25px;
-    color: #ffc400;
-    font-weight: 900;
-    margin: 15px 0 25px;
-    word-break: break-all;
-}
-
-/* KARTY */
-
-.cards {
-    max-width: 1100px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-    gap: 20px;
-}
-
-.card {
-    background: linear-gradient(145deg,#121212,#0b0b0b);
-    border: 1px solid #222;
-    border-radius: 18px;
-    padding: 30px;
-    text-align: center;
-    transition: .25s;
-}
-
-.card:hover {
-    transform: translateY(-7px);
-    border-color: #ffc400;
-}
-
-.card .icon {
-    font-size: 40px;
-    margin-bottom: 15px;
-}
-
-.card h3 {
-    color: #ffc400;
-    margin-bottom: 10px;
-    font-size: 25px;
-}
-
-.card p {
-    color: #888;
-    line-height: 1.5;
-}
-
-.price {
-    color: #ffc400;
-    font-size: 28px;
-    font-weight: 900;
-    margin: 15px 0;
-}
-
-/* DISCORD */
-
-.discord {
-    max-width: 900px;
-    margin: auto;
-    background: linear-gradient(135deg,#111,#0a0a0a);
-    border: 1px solid #282828;
-    border-radius: 20px;
-    padding: 50px 25px;
-    text-align: center;
-}
-
-.discord h2 {
-    font-size: 38px;
-    margin-bottom: 15px;
-}
-
-.discord p {
-    color: #888;
-    margin-bottom: 25px;
-}
-
-/* FOOTER */
-
-footer {
-    border-top: 1px solid #181818;
-    padding: 35px 20px;
-    text-align: center;
-    color: #555;
-}
-
-footer strong {
-    color: #ffc400;
-}
-
-/* MOBILE */
-
-@media(max-width:700px) {
-
-    nav {
-        padding: 0 20px;
+  <style>
+    :root{
+      --bg:#070914;
+      --bg2:#0c1020;
+      --card:rgba(18,24,45,.72);
+      --card2:rgba(25,32,59,.75);
+      --text:#f5f7ff;
+      --muted:#a8b0c7;
+      --line:rgba(255,255,255,.09);
+      --accent:#8b5cf6;
+      --accent2:#22d3ee;
+      --accent3:#ec4899;
+      --success:#34d399;
+      --shadow:0 20px 70px rgba(0,0,0,.35);
+      --radius:24px;
     }
 
-    nav div:last-child {
-        display: none;
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(139,92,246,.20), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(34,211,238,.13), transparent 25%),
+        radial-gradient(circle at 50% 85%, rgba(236,72,153,.10), transparent 28%),
+        var(--bg);
+      line-height:1.6;
+      overflow-x:hidden;
     }
 
-    h1 {
-        letter-spacing: -3px;
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    .container{width:min(1160px,92%);margin:auto}
+
+    /* Tło */
+    .grid-bg{
+      position:fixed;
+      inset:0;
+      z-index:-3;
+      opacity:.18;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+      background-size:55px 55px;
+      mask-image:linear-gradient(to bottom,black,transparent 90%);
     }
 
-    .hero p {
-        font-size: 17px;
+    .orb{
+      position:fixed;
+      border-radius:50%;
+      filter:blur(70px);
+      z-index:-2;
+      pointer-events:none;
+      opacity:.22;
+    }
+    .orb.one{width:300px;height:300px;background:var(--accent);top:12%;left:-120px}
+    .orb.two{width:280px;height:280px;background:var(--accent2);right:-100px;top:42%}
+    .orb.three{width:250px;height:250px;background:var(--accent3);left:35%;bottom:-100px}
+
+    /* Nawigacja */
+    nav{
+      position:fixed;
+      top:16px;
+      left:50%;
+      transform:translateX(-50%);
+      width:min(1120px,92%);
+      z-index:50;
+      padding:12px 16px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(7,9,20,.68);
+      backdrop-filter:blur(18px);
+      box-shadow:0 12px 40px rgba(0,0,0,.18);
     }
 
-    section {
-        padding: 75px 20px;
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
     }
 
-    .section-title h2 {
-        font-size: 32px;
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      letter-spacing:.08em;
     }
-}
-</style>
+
+    .logo-mark{
+      width:38px;height:38px;
+      display:grid;
+      place-items:center;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      box-shadow:0 0 25px rgba(139,92,246,.35);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:5px;
+      align-items:center;
+    }
+
+    .nav-links a{
+      color:var(--muted);
+      padding:9px 12px;
+      border-radius:10px;
+      transition:.2s;
+      font-size:.92rem;
+    }
+
+    .nav-links a:hover{
+      color:#fff;
+      background:rgba(255,255,255,.07);
+    }
+
+    .menu-btn{
+      display:none;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      color:#fff;
+      border-radius:10px;
+      padding:8px 11px;
+      cursor:pointer;
+    }
+
+    /* Hero */
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      padding:150px 0 90px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.25fr .75fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 13px;
+      border:1px solid rgba(139,92,246,.3);
+      background:rgba(139,92,246,.09);
+      border-radius:999px;
+      color:#d9ccff;
+      font-size:.85rem;
+      margin-bottom:20px;
+    }
+
+    .dot{
+      width:8px;height:8px;border-radius:50%;
+      background:var(--success);
+      box-shadow:0 0 15px var(--success);
+    }
+
+    h1{
+      font-size:clamp(3.3rem,8vw,7.4rem);
+      line-height:.88;
+      letter-spacing:-.07em;
+      margin-bottom:26px;
+    }
+
+    .gradient-text{
+      background:linear-gradient(100deg,#fff 10%,#c4b5fd 42%,#67e8f9 80%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .hero p{
+      color:var(--muted);
+      max-width:650px;
+      font-size:1.08rem;
+      margin-bottom:30px;
+    }
+
+    .buttons{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:13px 19px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      cursor:pointer;
+      transition:.2s;
+      font-weight:750;
+    }
+
+    .btn-primary{
+      color:#fff;
+      background:linear-gradient(135deg,var(--accent),#6d5dfc);
+      box-shadow:0 12px 35px rgba(139,92,246,.25);
+    }
+
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 17px 45px rgba(139,92,246,.35)}
+    .btn-secondary{background:rgba(255,255,255,.045);color:#e9ecf8}
+    .btn-secondary:hover{background:rgba(255,255,255,.09)}
+
+    .server-card{
+      position:relative;
+      padding:28px;
+      border:1px solid var(--line);
+      border-radius:30px;
+      background:linear-gradient(145deg,rgba(21,28,52,.88),rgba(9,12,25,.75));
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .server-card:before{
+      content:"";
+      position:absolute;
+      width:180px;height:180px;
+      border-radius:50%;
+      background:var(--accent);
+      filter:blur(75px);
+      opacity:.18;
+      top:-80px;right:-60px;
+    }
+
+    .server-icon{
+      width:76px;height:76px;
+      border-radius:22px;
+      display:grid;
+      place-items:center;
+      font-size:2rem;
+      margin-bottom:22px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      box-shadow:0 15px 40px rgba(34,211,238,.18);
+    }
+
+    .server-card h3{font-size:1.5rem;margin-bottom:4px}
+    .online{color:var(--success);font-size:.9rem;margin-bottom:24px}
+
+    .ip-box{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:14px;
+      border-radius:14px;
+      background:rgba(0,0,0,.25);
+      border:1px solid var(--line);
+      margin-bottom:14px;
+    }
+
+    .ip-box code{font-size:.95rem;color:#dce2f5;word-break:break-all}
+    .copy{
+      border:0;
+      border-radius:9px;
+      padding:8px 11px;
+      color:#fff;
+      background:rgba(255,255,255,.08);
+      cursor:pointer;
+    }
+
+    /* Sekcje */
+    section{padding:105px 0}
+    .section-head{max-width:720px;margin-bottom:42px}
+    .eyebrow{
+      color:#bba7ff;
+      font-size:.8rem;
+      font-weight:850;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+    .section-head h2{
+      font-size:clamp(2.2rem,5vw,4rem);
+      line-height:1;
+      letter-spacing:-.045em;
+      margin-bottom:15px;
+    }
+    .section-head p{color:var(--muted)}
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .card{
+      padding:26px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:var(--card);
+      backdrop-filter:blur(12px);
+      transition:.25s;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(139,92,246,.35);
+      background:var(--card2);
+    }
+
+    .icon{
+      width:50px;height:50px;
+      display:grid;
+      place-items:center;
+      border-radius:15px;
+      margin-bottom:18px;
+      background:rgba(139,92,246,.12);
+      border:1px solid rgba(139,92,246,.18);
+      font-size:1.35rem;
+    }
+
+    .card h3{font-size:1.2rem;margin-bottom:8px}
+    .card p{color:var(--muted);font-size:.95rem}
+
+    /* Statystyki */
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      border:1px solid var(--line);
+      border-radius:24px;
+      overflow:hidden;
+      background:rgba(255,255,255,.025);
+    }
+    .stat{
+      padding:28px 20px;
+      text-align:center;
+      border-right:1px solid var(--line);
+    }
+    .stat:last-child{border-right:0}
+    .stat strong{display:block;font-size:2.3rem;letter-spacing:-.04em}
+    .stat span{color:var(--muted);font-size:.88rem}
+
+    /* O nas */
+    .about-grid{
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:40px;
+      align-items:center;
+    }
+
+    .feature-list{display:grid;gap:14px;margin-top:25px}
+    .feature{
+      display:flex;
+      gap:13px;
+      align-items:flex-start;
+      padding:14px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(255,255,255,.025);
+    }
+    .check{
+      flex:0 0 auto;
+      width:28px;height:28px;
+      display:grid;
+      place-items:center;
+      border-radius:9px;
+      background:rgba(52,211,153,.12);
+      color:var(--success);
+    }
+    .feature b{display:block;margin-bottom:2px}
+    .feature span{color:var(--muted);font-size:.9rem}
+
+    .about-panel{
+      padding:35px;
+      min-height:400px;
+      border-radius:30px;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(circle at 75% 25%,rgba(34,211,238,.15),transparent 25%),
+        radial-gradient(circle at 25% 75%,rgba(139,92,246,.18),transparent 30%),
+        var(--card);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+    }
+
+    .about-panel .big{
+      font-size:clamp(4rem,10vw,8rem);
+      font-weight:950;
+      letter-spacing:-.08em;
+      line-height:.8;
+    }
+
+    /* Tabela */
+    .table-wrap{
+      overflow:auto;
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:var(--card);
+    }
+
+    table{width:100%;border-collapse:collapse;min-width:600px}
+    th,td{text-align:left;padding:18px 20px;border-bottom:1px solid var(--line)}
+    th{color:#d8dcf0;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em}
+    td{color:var(--muted)}
+    tr:last-child td{border-bottom:0}
+
+    .pill{
+      display:inline-block;
+      padding:5px 9px;
+      border-radius:999px;
+      background:rgba(52,211,153,.10);
+      color:#6ee7b7;
+      font-size:.78rem;
+    }
+
+    /* FAQ */
+    .faq{display:grid;gap:12px;max-width:850px}
+    details{
+      border:1px solid var(--line);
+      border-radius:17px;
+      background:var(--card);
+      overflow:hidden;
+    }
+    summary{
+      list-style:none;
+      cursor:pointer;
+      padding:20px;
+      font-weight:750;
+      display:flex;
+      justify-content:space-between;
+      gap:15px;
+    }
+    summary::-webkit-details-marker{display:none}
+    summary:after{content:"+";color:#a99aff;font-size:1.2rem}
+    details[open] summary:after{content:"−"}
+    details p{padding:0 20px 20px;color:var(--muted)}
+
+    /* CTA */
+    .cta{
+      text-align:center;
+      padding:70px 30px;
+      border:1px solid rgba(139,92,246,.25);
+      border-radius:32px;
+      background:
+        radial-gradient(circle at 50% 0%,rgba(139,92,246,.18),transparent 45%),
+        rgba(17,22,42,.75);
+      overflow:hidden;
+      position:relative;
+    }
+    .cta h2{font-size:clamp(2.4rem,6vw,4.5rem);line-height:1;letter-spacing:-.055em;margin-bottom:15px}
+    .cta p{color:var(--muted);max-width:650px;margin:0 auto 28px}
+
+    footer{
+      padding:45px 0 35px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+    }
+    .footer-grid{
+      display:flex;
+      justify-content:space-between;
+      gap:25px;
+      align-items:center;
+    }
+    .footer-links{display:flex;gap:18px;flex-wrap:wrap}
+    .footer-links a:hover{color:#fff}
+
+    .reveal{
+      opacity:0;
+      transform:translateY(22px);
+      transition:opacity .7s ease,transform .7s ease;
+    }
+    .reveal.show{opacity:1;transform:none}
+
+    @media(max-width:850px){
+      .nav-links{
+        display:none;
+        position:absolute;
+        top:64px;
+        left:0;
+        right:0;
+        padding:12px;
+        flex-direction:column;
+        background:rgba(7,9,20,.95);
+        border:1px solid var(--line);
+        border-radius:16px;
+      }
+      .nav-links.open{display:flex}
+      .nav-links a{width:100%}
+      .menu-btn{display:block}
+      .hero-grid,.about-grid{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr 1fr}
+      .stats{grid-template-columns:1fr 1fr}
+      .stat:nth-child(2){border-right:0}
+      .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+      .hero{padding-top:130px}
+    }
+
+    @media(max-width:560px){
+      section{padding:75px 0}
+      .cards{grid-template-columns:1fr}
+      .stats{grid-template-columns:1fr}
+      .stat{border-right:0!important;border-bottom:1px solid var(--line)}
+      .stat:last-child{border-bottom:0}
+      .server-card{padding:22px}
+      .about-panel{min-height:280px}
+      .footer-grid{flex-direction:column;align-items:flex-start}
+      h1{font-size:4rem}
+    }
+  </style>
 </head>
 
 <body>
+  <div class="grid-bg"></div>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
 
-<nav>
-    <div class="logo">HARX<span>SMP</span></div>
+  <nav>
+    <div class="nav-inner container">
+      <a href="#start" class="logo">
+        <span class="logo-mark">H</span>
+        <span>HARX SMP</span>
+      </a>
 
-    <div>
-        <a href="#start">Start</a>
-        <a href="#serwer">Serwer</a>
-        <a href="#rangi">Rangi</a>
-        <a href="administracja.html">Administracja</a>
+      <div class="nav-links" id="navLinks">
+        <a href="#o-nas">O nas</a>
+        <a href="#tryby">Tryby</a>
+        <a href="#info">Informacje</a>
+        <a href="#faq">FAQ</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+
+      <button class="menu-btn" id="menuBtn">☰</button>
     </div>
-</nav>
+  </nav>
 
-<section class="hero" id="start">
-    <div class="hero-content">
+  <main id="start">
 
-        <div class="badge">
-            ⚔ WITAJ NA HARX SMP
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="badge"><span class="dot"></span> Serwer jest online</div>
+
+          <h1>
+            WITAJ NA<br>
+            <span class="gradient-text">HARX SMP</span>
+          </h1>
+
+          <p>
+            Nowoczesny serwer Minecraft stworzony dla osób, które chcą
+            budować, walczyć, odkrywać i przede wszystkim dobrze się bawić.
+            Zbuduj swoją historię razem z innymi graczami.
+          </p>
+
+          <div class="buttons">
+            <a class="btn btn-primary" href="#dolacz">Dołącz do serwera →</a>
+            <a class="btn btn-secondary" href="#o-nas">Poznaj HARX SMP</a>
+          </div>
         </div>
 
-        <h1>HARX<br><span>SMP</span></h1>
+        <div class="server-card reveal">
+          <div class="server-icon">⛏</div>
+          <h3>HARX SMP</h3>
+          <div class="online">● Serwer dostępny</div>
 
-        <p>
-            Wkrocz do świata HARX SMP.
-            Rozwijaj swoją postać, buduj własne imperium,
-            walcz, handluj i baw się razem z innymi graczami.
-        </p>
+          <div class="ip-box">
+            <code id="serverIp">play.harxsmp.pl</code>
+            <button class="copy" onclick="copyIP()">Kopiuj</button>
+          </div>
 
-        <div class="buttons">
+          <p style="color:var(--muted);font-size:.9rem">
+            Skopiuj adres serwera i rozpocznij swoją przygodę.
+          </p>
+        </div>
+      </div>
+    </section>
 
-            <button class="btn btn-main" onclick="copyIP()">
-                📋 KOPIUJ IP
-            </button>
-
-            <a href="administracja.html" class="btn btn-dark">
-                👑 ADMINISTRACJA
-            </a>
-
+    <section id="o-nas">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">O projekcie</div>
+          <h2>Więcej niż zwykły serwer.</h2>
+          <p>
+            HARX SMP to miejsce, w którym możesz stworzyć własną bazę,
+            poznać nowych ludzi i zdecydować, jak będzie wyglądała Twoja
+            przygoda.
+          </p>
         </div>
 
-    </div>
-</section>
+        <div class="about-grid">
+          <div class="reveal">
+            <div class="feature-list">
+              <div class="feature">
+                <div class="check">✓</div>
+                <div><b>Aktywna społeczność</b><span>Graj razem z innymi i twórz własne historie.</span></div>
+              </div>
+              <div class="feature">
+                <div class="check">✓</div>
+                <div><b>Rozgrywka survival</b><span>Eksploruj świat, zdobywaj surowce i rozwijaj swoją bazę.</span></div>
+              </div>
+              <div class="feature">
+                <div class="check">✓</div>
+                <div><b>Wydarzenia</b><span>Specjalne eventy i aktywności dla graczy.</span></div>
+              </div>
+              <div class="feature">
+                <div class="check">✓</div>
+                <div><b>Rozwijany projekt</b><span>Strona i serwer są stale rozwijane.</span></div>
+              </div>
+            </div>
+          </div>
 
-<section id="serwer">
+          <div class="about-panel reveal">
+            <div>
+              <div class="big gradient-text">HARX</div>
+              <p style="color:var(--muted);margin-top:20px">Twoja przygoda. Twój świat. Twoja historia.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="section-title">
-        <h2>NASZ <span>SERWER</span></h2>
-        <p>Wszystko, czego potrzebujesz, żeby rozpocząć przygodę.</p>
-    </div>
-
-    <div class="ip-box">
-
-        <p style="color:#777;">IP SERWERA</p>
-
-        <div class="ip" id="serverIP">
-            HarxSMP.aternos.me
+    <section id="tryby">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Rozgrywka</div>
+          <h2>Znajdź swój sposób na grę.</h2>
+          <p>Każdy gracz może podejść do świata po swojemu.</p>
         </div>
 
-        <button class="btn btn-main" onclick="copyIP()">
-            SKOPIUJ IP
-        </button>
-
-    </div>
-
-    <br><br>
-
-    <div class="cards">
-
-        <div class="card">
-            <div class="icon">🌍</div>
+        <div class="cards">
+          <article class="card reveal">
+            <div class="icon">🌲</div>
             <h3>Survival</h3>
-            <p>
-                Rozwijaj swoją bazę i przetrwaj
-                w świecie pełnym możliwości.
-            </p>
-        </div>
+            <p>Buduj bazę, eksploruj świat, zdobywaj surowce i rozwijaj swoje imperium.</p>
+          </article>
 
-        <div class="card">
+          <article class="card reveal">
             <div class="icon">⚔️</div>
-            <h3>PvP</h3>
-            <p>
-                Walcz z innymi graczami
-                i rozwijaj swoje umiejętności.
-            </p>
-        </div>
+            <h3>Przygoda</h3>
+            <p>Wyruszaj w nieznane, szukaj ciekawych miejsc i twórz własne historie.</p>
+          </article>
 
-        <div class="card">
-            <div class="icon">💰</div>
-            <h3>Ekonomia</h3>
-            <p>
-                Zarabiaj pieniądze, handluj
-                i rozwijaj swoje imperium.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🎉</div>
+          <article class="card reveal">
+            <div class="icon">🏆</div>
             <h3>Eventy</h3>
-            <p>
-                Bierz udział w wydarzeniach
-                i zdobywaj nagrody.
-            </p>
+            <p>Bierz udział w wydarzeniach organizowanych dla całej społeczności.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="info">
+      <div class="container">
+        <div class="stats reveal">
+          <div class="stat"><strong>24/7</strong><span>Dostępność</span></div>
+          <div class="stat"><strong>1.21+</strong><span>Wersja Minecraft</span></div>
+          <div class="stat"><strong>∞</strong><span>Możliwości</span></div>
+          <div class="stat"><strong>100%</strong><span>Pasji do projektu</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Informacje</div>
+          <h2>Najważniejsze rzeczy w jednym miejscu.</h2>
+          <p>Podstawowe informacje dotyczące rozgrywki.</p>
         </div>
 
+        <div class="table-wrap reveal">
+          <table>
+            <thead>
+              <tr>
+                <th>Informacja</th>
+                <th>Wartość</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Serwer</td>
+                <td>HARX SMP</td>
+                <td><span class="pill">Online</span></td>
+              </tr>
+              <tr>
+                <td>Adres</td>
+                <td>play.harxsmp.pl</td>
+                <td><span class="pill">Aktywny</span></td>
+              </tr>
+              <tr>
+                <td>Tryb</td>
+                <td>Survival SMP</td>
+                <td><span class="pill">Dostępny</span></td>
+              </tr>
+              <tr>
+                <td>Discord</td>
+                <td>Link w sekcji kontakt</td>
+                <td><span class="pill">Zapraszamy</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">FAQ</div>
+          <h2>Masz pytanie?</h2>
+          <p>Sprawdź odpowiedzi na najczęściej zadawane pytania.</p>
+        </div>
+
+        <div class="faq">
+          <details class="reveal">
+            <summary>Jak dołączyć do HARX SMP?</summary>
+            <p>Skopiuj adres serwera z sekcji na górze strony, dodaj go w Minecraft i połącz się z serwerem.</p>
+          </details>
+
+          <details class="reveal">
+            <summary>Jaką wersję Minecraft obsługuje serwer?</summary>
+            <p>Strona została przygotowana z informacją 1.21+. Jeśli konfiguracja serwera jest inna, zmień tę informację w tabeli powyżej.</p>
+          </details>
+
+          <details class="reveal">
+            <summary>Czy mogę grać ze znajomymi?</summary>
+            <p>Tak. Właśnie na wspólnej rozgrywce opiera się idea SMP — zaproś znajomych i budujcie razem.</p>
+          </details>
+
+          <details class="reveal">
+            <summary>Gdzie znajdę regulamin?</summary>
+            <p>Możesz dodać tutaj link do osobnej strony z regulaminem lub do kanału Discord poświęconego zasadom serwera.</p>
+          </details>
+
+          <details class="reveal">
+            <summary>Jak skontaktować się z administracją?</summary>
+            <p>Najwygodniej przez Discord. Link możesz ustawić w przycisku poniżej.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="dolacz">
+      <div class="container">
+        <div class="cta reveal">
+          <div class="eyebrow">Gotowy?</div>
+          <h2>Wskakuj do świata HARX.</h2>
+          <p>
+            Skopiuj adres serwera, uruchom Minecraft i zacznij budować swoją
+            historię razem z resztą społeczności.
+          </p>
+
+          <div class="buttons" style="justify-content:center">
+            <button class="btn btn-primary" onclick="copyIP()">Skopiuj IP serwera</button>
+            <a class="btn btn-secondary" href="#kontakt">Kontakt →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt" style="padding-top:30px">
+      <div class="container">
+        <div class="cards">
+          <div class="card reveal">
+            <div class="icon">💬</div>
+            <h3>Discord</h3>
+            <p>Dołącz do społeczności, porozmawiaj z graczami i sprawdzaj aktualności.</p>
+            <!-- ZMIEŃ LINK NA SWÓJ DISCORD -->
+            <a class="btn btn-secondary" href="https://discord.gg/" target="_blank" rel="noopener" style="margin-top:18px">Discord →</a>
+          </div>
+
+          <div class="card reveal">
+            <div class="icon">📢</div>
+            <h3>Aktualności</h3>
+            <p>W tym miejscu możesz później dodać informacje o nowych aktualizacjach i eventach.</p>
+          </div>
+
+          <div class="card reveal">
+            <div class="icon">🛠️</div>
+            <h3>Pomoc</h3>
+            <p>Masz problem? Skontaktuj się z administracją przez kanał pomocy na Discordzie.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="logo"><span class="logo-mark">H</span><span>HARX SMP</span></div>
+        <p style="margin-top:10px;font-size:.88rem">© 2026 HARX SMP. Wszystkie prawa zastrzeżone.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#start">Start</a>
+        <a href="#o-nas">O nas</a>
+        <a href="#tryby">Tryby</a>
+        <a href="#faq">FAQ</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
     </div>
+  </footer>
 
-</section>
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
 
-<section id="rangi">
-
-    <div class="section-title">
-        <h2>CENNIK <span>RANG</span></h2>
-        <p>Wybierz rangę dla siebie i ciesz się dodatkowymi możliwościami.</p>
-    </div>
-
-    <div class="cards">
-
-        <div class="card">
-            <div class="icon">🥉</div>
-            <h3>VIP</h3>
-            <div class="price">5 zł</div>
-            <p>
-                Podstawowe dodatki i przywileje.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🥈</div>
-            <h3>SVIP</h3>
-            <div class="price">10 zł</div>
-            <p>
-                Więcej możliwości niż VIP.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🥇</div>
-            <h3>GVIP</h3>
-            <div class="price">20 zł</div>
-            <p>
-                Jeszcze więcej dodatków i udogodnień.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">👑</div>
-            <h3>BOSS</h3>
-            <div class="price">35 zł</div>
-            <p>
-                Najwyższa ranga z największą liczbą przywilejów.
-            </p>
-        </div>
-
-    </div>
-
-    <div class="ip-box" style="margin-top:30px;">
-
-        <p style="color:#777;">METODA PŁATNOŚCI</p>
-
-        <div class="ip" style="font-size:28px;">
-            💳 TYLKO PSC
-        </div>
-
-        <p style="color:#888;">
-            W sprawie zakupu rangi skontaktuj się z administracją HARX SMP.
-        </p>
-
-    </div>
-
-</section>
-
-<section>
-
-    <div class="discord">
-
-        <h2>
-            DOŁĄCZ DO
-            <span style="color:#ffc400;">DISCORDA</span>
-        </h2>
-
-        <p>
-            Poznaj społeczność HARX SMP i otrzymuj
-            informacje o serwerze oraz eventach.
-        </p>
-<a href="https://discord.gg/KGZuwU752" class="btn btn-main" target="_blank" rel="noopener noreferrer">
-    💬 DOŁĄCZ NA DISCORD
-</a>
-
-    </div>
-
-</section>
-
-<footer>
-    <p>
-        © 2026 <strong>HARX SMP</strong> —
-        Wszystkie prawa zastrzeżone.
-    </p>
-
-    <p style="margin-top:10px;">
-        Minecraft jest własnością Mojang Studios.
-    </p>
-</footer>
-
-<script>
-function copyIP() {
-
-    const ip = "HarxSMP.aternos.me";
-
-    navigator.clipboard.writeText(ip).then(() => {
-
-        alert("✅ IP zostało skopiowane!");
-
-    }).catch(() => {
-
-        prompt("Skopiuj IP serwera:", ip);
-
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
     });
-}
-</script>
 
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => navLinks.classList.remove("open"));
+    });
+
+    async function copyIP(){
+      const ip = document.getElementById("serverIp").textContent.trim();
+
+      try{
+        await navigator.clipboard.writeText(ip);
+        showToast("Skopiowano IP: " + ip);
+      }catch(e){
+        showToast("IP serwera: " + ip);
+      }
+    }
+
+    function showToast(message){
+      let toast = document.getElementById("toast");
+
+      if(!toast){
+        toast = document.createElement("div");
+        toast.id = "toast";
+        toast.style.position = "fixed";
+        toast.style.left = "50%";
+        toast.style.bottom = "25px";
+        toast.style.transform = "translateX(-50%) translateY(20px)";
+        toast.style.padding = "12px 17px";
+        toast.style.border = "1px solid rgba(255,255,255,.12)";
+        toast.style.borderRadius = "13px";
+        toast.style.background = "rgba(10,13,27,.92)";
+        toast.style.backdropFilter = "blur(15px)";
+        toast.style.color = "#fff";
+        toast.style.zIndex = "100";
+        toast.style.opacity = "0";
+        toast.style.transition = ".25s";
+        document.body.appendChild(toast);
+      }
+
+      toast.textContent = message;
+      requestAnimationFrame(() => {
+        toast.style.opacity = "1";
+        toast.style.transform = "translateX(-50%) translateY(0)";
+      });
+
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => {
+        toast.style.opacity = "0";
+        toast.style.transform = "translateX(-50%) translateY(20px)";
+      }, 2200);
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.12});
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+  </script>
 </body>
-    </html>
+</html>
