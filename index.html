@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HARX SMP | Serwer Minecraft</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #070707;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* TŁO */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 50% 20%, rgba(255, 190, 0, 0.12), transparent 35%),
+        radial-gradient(circle at 10% 80%, rgba(255, 120, 0, 0.08), transparent 30%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* NAWIGACJA */
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    background: rgba(5, 5, 5, 0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 200, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: #ffc400;
+}
+
+nav a {
+    color: #aaa;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: bold;
+    transition: .2s;
+}
+
+nav a:hover {
+    color: #ffc400;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 20px 50px;
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.badge {
+    display: inline-block;
+    border: 1px solid rgba(255, 196, 0, .4);
+    background: rgba(255, 196, 0, .08);
+    color: #ffc400;
+    padding: 9px 18px;
+    border-radius: 30px;
+    margin-bottom: 25px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: clamp(65px, 14vw, 150px);
+    line-height: .9;
+    font-weight: 1000;
+    letter-spacing: -6px;
+    text-shadow:
+        0 0 15px rgba(255, 196, 0, .25),
+        0 10px 30px #000;
+}
+
+h1 span {
+    color: #ffc400;
+}
+
+.hero p {
+    color: #999;
+    font-size: 20px;
+    margin: 30px auto;
+    max-width: 650px;
+    line-height: 1.6;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 800;
+    transition: .25s;
+    cursor: pointer;
+    border: none;
+    font-size: 15px;
+}
+
+.btn-main {
+    background: #ffc400;
+    color: #090909;
+    box-shadow: 0 0 25px rgba(255, 196, 0, .2);
+}
+
+.btn-main:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 35px rgba(255, 196, 0, .4);
+}
+
+.btn-dark {
+    background: #151515;
+    color: white;
+    border: 1px solid #292929;
+}
+
+.btn-dark:hover {
+    border-color: #ffc400;
+    transform: translateY(-3px);
+}
+
+/* SEKCJE */
+
+section {
+    padding: 100px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.section-title h2 {
+    font-size: 42px;
+}
+
+.section-title span {
+    color: #ffc400;
+}
+
+.section-title p {
+    color: #777;
+    margin-top: 10px;
+}
+
+/* IP */
+
+.ip-box {
+    max-width: 700px;
+    margin: auto;
+    background: #101010;
+    border: 1px solid #252525;
+    border-radius: 18px;
+    padding: 30px;
+    text-align: center;
+}
+
+.ip {
+    font-size: 25px;
+    color: #ffc400;
+    font-weight: 900;
+    margin: 15px 0 25px;
+    word-break: break-all;
+}
+
+/* KARTY */
+
+.cards {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: linear-gradient(145deg, #121212, #0b0b0b);
+    border: 1px solid #222;
+    border-radius: 18px;
+    padding: 30px;
+    text-align: center;
+    transition: .25s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    border-color: #ffc400;
+}
+
+.card .icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: #ffc400;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #888;
+    line-height: 1.5;
+}
+
+/* RANGI */
+
+.rank {
+    position: relative;
+}
+
+.rank h3 {
+    font-size: 25px;
+}
+
+.rank.vip h3 {
+    color: #ffd000;
+}
+
+.rank.svip h3 {
+    color: #55ff55;
+}
+
+.rank.mvip h3 {
+    color: #55ffff;
+}
+
+.rank.owner h3 {
+    color: #ff5555;
+}
+
+.rank ul {
+    list-style: none;
+    margin-top: 20px;
+    color: #aaa;
+    line-height: 2;
+}
+
+/* DISCORD */
+
+.discord {
+    max-width: 900px;
+    margin: auto;
+    background: linear-gradient(135deg, #111, #0a0a0a);
+    border: 1px solid #282828;
+    border-radius: 20px;
+    padding: 50px 25px;
+    text-align: center;
+}
+
+.discord h2 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.discord p {
+    color: #888;
+    margin-bottom: 25px;
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid #181818;
+    padding: 35px 20px;
+    text-align: center;
+    color: #555;
+}
+
+footer strong {
+    color: #ffc400;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    nav {
+        padding: 0 20px;
+    }
+
+    nav div:last-child {
+        display: none;
+    }
+
+    h1 {
+        letter-spacing: -3px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    section {
+        padding: 75px 20px;
+    }
+
+    .section-title h2 {
+        font-size: 32px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAWIGACJA -->
+
+<nav>
+    <div class="logo">HARX<span>SMP</span></div>
+
+    <div>
+        <a href="#start">Start</a>
+        <a href="#serwer">Serwer</a>
+        <a href="#rangi">Rangi</a>
+        <a href="#discord">Discord</a>
+    </div>
+</nav>
+
+
+<!-- START -->
+
+<section class="hero" id="start">
+    <div class="hero-content">
+
+        <div class="badge">
+            ⚔ WITAJ NA HARX SMP
+        </div>
+
+        <h1>HARX<br><span>SMP</span></h1>
+
+        <p>
+            Wkrocz do świata HARX SMP.
+            Rozwijaj swoją postać, buduj własne imperium,
+            walcz, handluj i baw się razem z innymi graczami.
+        </p>
+
+        <div class="buttons">
+            <button class="btn btn-main" onclick="copyIP()">
+                📋 KOPIUJ IP
+            </button>
+
+            <a href="#serwer" class="btn btn-dark">
+                ⚔ INFORMACJE
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- SERWER -->
+
+<section id="serwer">
+
+    <div class="section-title">
+        <h2>NASZ <span>SERWER</span></h2>
+        <p>Wszystko, czego potrzebujesz, żeby zacząć grę.</p>
+    </div>
+
+    <div class="ip-box">
+
+        <p style="color:#777;">IP SERWERA</p>
+
+        <div class="ip" id="serverIP">
+            HarxSMP.aternos.me
+        </div>
+
+        <button class="btn btn-main" onclick="copyIP()">
+            SKOPIUJ IP
+        </button>
+
+    </div>
+
+    <br><br>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">🌍</div>
+            <h3>Survival</h3>
+            <p>
+                Rozwijaj swoją bazę i przetrwaj
+                w świecie pełnym możliwości.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">⚔️</div>
+            <h3>PvP</h3>
+            <p>
+                Walcz z innymi graczami
+                i pokaż, kto jest najlepszy.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">💰</div>
+            <h3>Ekonomia</h3>
+            <p>
+                Zarabiaj pieniądze, handluj
+                i rozwijaj swoje imperium.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎉</div>
+            <h3>Eventy</h3>
+            <p>
+                Bierz udział w wydarzeniach
+                i zdobywaj wyjątkowe nagrody.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- RANGI -->
+
+<section id="rangi">
+
+    <div class="section-title">
+        <h2>NASZE <span>RANGI</span></h2>
+        <p>Wybierz rangę i wyróżnij się na serwerze.</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card rank vip">
+            <div class="icon">⭐</div>
+            <h3>VIP</h3>
+            <p>Podstawowe przywileje i dodatki.</p>
+
+            <ul>
+                <li>✓ Kolorowy nick</li>
+                <li>✓ Dodatkowe komendy</li>
+                <li>✓ Specjalne efekty</li>
+            </ul>
+        </div>
+
+        <div class="card rank svip">
+            <div class="icon">💎</div>
+            <h3>SVIP</h3>
+            <p>Więcej możliwości dla aktywnych graczy.</p>
+
+            <ul>
+                <li>✓ Wszystko z VIP</li>
+                <li>✓ Więcej możliwości</li>
+                <li>✓ Dodatkowe bonusy</li>
+            </ul>
+        </div>
+
+        <div class="card rank mvip">
+            <div class="icon">🔥</div>
+            <h3>MVIP</h3>
+            <p>Najwyższy poziom gracza.</p>
+
+            <ul>
+                <li>✓ Wszystko z SVIP</li>
+                <li>✓ Ekskluzywne dodatki</li>
+                <li>✓ Specjalne bonusy</li>
+            </ul>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DISCORD -->
+
+<section id="discord">
+
+    <div class="discord">
+
+        <h2>DOŁĄCZ DO <span style="color:#ffc400;">DISCORDA</span></h2>
+
+        <p>
+            Poznaj społeczność HARX SMP, odbieraj informacje
+            o eventach i porozmawiaj z innymi graczami.
+        </p>
+
+        <a href="#" class="btn btn-main">
+            💬 DOŁĄCZ NA DISCORD
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- STOPKA -->
+
+<footer>
+    <p>
+        © 2026 <strong>HARX SMP</strong> —
+        Wszystkie prawa zastrzeżone.
+    </p>
+
+    <p style="margin-top:10px;">
+        Minecraft jest własnością Mojang Studios.
+    </p>
+</footer>
+
+
+<script>
+
+function copyIP() {
+
+    const ip = "HarxSMP.aternos.me";
+
+    navigator.clipboard.writeText(ip).then(() => {
+
+        alert("✅ IP zostało skopiowane!");
+
+    }).catch(() => {
+
+        prompt("Skopiuj IP serwera:", ip);
+
+    });
+}
+
+</script>
+
+</body>
+  </html>
