@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Administracja — HARXSMP</title>
+<style>
+:root{--bg:#070812;--p:#11152a;--p2:#171c35;--t:#f5f7ff;--m:#aab2ca;--c:#48e6ff;--v:#9b6cff;--g:#55f28a;--line:#ffffff1a}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 10% 10%,#48e6ff14,transparent 30%),radial-gradient(circle at 90% 20%,#9b6cff18,transparent 35%),var(--bg);color:var(--t);font:16px/1.7 system-ui,Arial,sans-serif}
+a{color:inherit;text-decoration:none}.wrap{max-width:1150px;margin:auto;padding:0 20px}
+.top{position:sticky;top:0;z-index:20;background:#070812dd;backdrop-filter:blur(15px);border-bottom:1px solid var(--line)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:22px;font-weight:900}.logo span{color:var(--c)}
+.hamb{width:46px;height:42px;border:1px solid var(--line);border-radius:12px;background:var(--p);display:flex;flex-direction:column;justify-content:center;gap:5px;align-items:center;cursor:pointer}.hamb i{width:22px;height:2px;background:white;border-radius:3px}
+.menu{position:absolute;right:20px;top:80px;width:min(340px,calc(100vw - 40px));padding:10px;background:#0d1020fa;border:1px solid var(--line);border-radius:17px;box-shadow:0 20px 60px #0009;display:none}.menu.open{display:block}.menu a{display:block;padding:11px 13px;border-radius:10px;color:var(--m)}.menu a:hover,.menu .active{background:#48e6ff12;color:var(--c)}
+.hero{padding:75px 0 45px}.hero h1{font-size:clamp(42px,7vw,76px);line-height:1;margin:12px 0 18px;letter-spacing:-3px}.lead{font-size:19px;color:var(--m);max-width:850px}.k{color:var(--c);font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;padding-bottom:55px}
+.card{position:relative;background:linear-gradient(145deg,#171c35f5,#0d1020f5);border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:0 18px 55px #0005;overflow:hidden}
+.card:before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:linear-gradient(90deg,var(--c),var(--v))}
+.card:hover{transform:translateY(-3px);transition:.2s;box-shadow:0 22px 65px #0007}
+.role{display:inline-block;padding:5px 10px;border-radius:99px;background:#48e6ff12;color:var(--c);font-size:12px;font-weight:900;letter-spacing:1px}
+h2{font-size:32px;margin:12px 0 5px}.name{font-size:21px;font-weight:900;color:white}.muted,p{color:var(--m)}
+ul{padding-left:22px}li{margin:7px 0}.contact{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);color:var(--m)}
+.notice{margin:0 0 55px;padding:18px 20px;border-left:4px solid var(--c);background:#48e6ff0d;border-radius:10px}
+footer{border-top:1px solid var(--line);padding:35px 0;color:var(--m)}
+@media(max-width:800px){.grid{grid-template-columns:1fr}.hero{padding-top:52px}}
+</style>
+</head>
+<body>
+<header class="top">
+<div class="wrap nav">
+<a class="logo" href="index.html">HARX<span>SMP</span></a>
+<button class="hamb" id="hamb" aria-label="Otwórz menu"><i></i><i></i><i></i></button>
+</div>
+<nav class="menu" id="menu">
+<a href="index.html">Start</a>
+<a href="serwer.html">Serwer</a>
+<a href="tryby.html">Tryby</a>
+<a href="rangi.html">Rangi</a>
+<a href="aktualnosci.html">Aktualności</a>
+<a href="galeria.html">Galeria</a>
+<a href="mapa.html">Mapa</a>
+<a href="historia.html">Historia</a>
+<a class="active" href="administracja.html">Administracja</a>
+<a href="zasady.html">Regulamin</a>
+<a href="faq.html">FAQ</a>
+<a href="kontakt.html">Kontakt</a>
+</nav>
+</header>
+
+<main>
+<section class="hero">
+<div class="wrap">
+<span class="k">👑 Ekipa HARXSMP</span>
+<h1>Administracja serwera</h1>
+<p class="lead">Poznaj osoby odpowiedzialne za rozwój HARXSMP, stronę techniczną, bezpieczeństwo oraz promowanie serwera.</p>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<div class="notice"><b>🛡️ Ważne</b><br>
+Każda osoba w ekipie ma inne zadania. Dzięki podziałowi obowiązków administracja może zajmować się zarówno rozwojem serwera, jak i bezpieczeństwem oraz społecznością.
+</div>
+
+<div class="grid">
+
+<article class="card">
+<span class="role">👑 WŁAŚCICIEL</span>
+<h2>koloszank</h2>
+<div class="name">Właściciel HARXSMP</div>
+<p>Odpowiada za całość projektu HARXSMP i podejmuje najważniejsze decyzje dotyczące serwera.</p>
+<ul>
+<li>Zarządzanie całym projektem HARXSMP.</li>
+<li>Planowanie rozwoju serwera i strony.</li>
+<li>Nadzorowanie pracy pozostałych członków ekipy.</li>
+<li>Decydowanie o najważniejszych zmianach i aktualizacjach.</li>
+<li>Kontakt w najważniejszych sprawach dotyczących projektu.</li>
+<li>Dbanie o kierunek rozwoju społeczności.</li>
+</ul>
+<div class="contact">👑 Główna osoba odpowiedzialna za HARXSMP.</div>
+</article>
+
+<article class="card">
+<span class="role">🛠️ TECHNIK</span>
+<h2>Mapka</h2>
+<div class="name">Technik serwera</div>
+<p>Odpowiada za techniczną stronę HARXSMP oraz pomaga utrzymywać serwer w prawidłowym działaniu.</p>
+<ul>
+<li>Konfiguracja i utrzymanie serwera.</li>
+<li>Pomoc przy pluginach i ustawieniach.</li>
+<li>Rozwiązywanie problemów technicznych.</li>
+<li>Przygotowywanie i wdrażanie zmian technicznych.</li>
+<li>Sprawdzanie działania funkcji serwera.</li>
+<li>Współpraca z właścicielem przy rozwoju projektu.</li>
+</ul>
+<div class="contact">⚙️ Główna osoba od spraw technicznych.</div>
+</article>
+
+<article class="card">
+<span class="role">🔐 BEZPIECZEŃSTWO</span>
+<h2>XdlysyXd</h2>
+<div class="name">Osoba odpowiedzialna za bezpieczeństwo</div>
+<p>Dba o bezpieczeństwo serwera i reaguje na sytuacje, które mogą zagrozić rozgrywce lub społeczności.</p>
+<ul>
+<li>Monitorowanie podejrzanych zachowań.</li>
+<li>Reagowanie na próby oszustw i nadużyć.</li>
+<li>Zwracanie uwagi na cheaty i niedozwolone wspomagacze.</li>
+<li>Pomoc w wykrywaniu niebezpiecznych sytuacji.</li>
+<li>Współpraca z właścicielem i technikiem.</li>
+<li>Dbanie o bezpieczne środowisko dla graczy.</li>
+</ul>
+<div class="contact">🔒 Bezpieczeństwo i ochrona serwera.</div>
+</article>
+
+<article class="card">
+<span class="role">📢 PROMOWANIE SERWERA</span>
+<h2>Natanielmiecz_</h2>
+<div class="name">Promocja HARXSMP</div>
+<p>Odpowiada za promowanie serwera i pomaganie w docieraniu z HARXSMP do nowych graczy.</p>
+<ul>
+<li>Promowanie serwera w odpowiednich miejscach.</li>
+<li>Tworzenie i rozpowszechnianie informacji o HARXSMP.</li>
+<li>Pomoc w zdobywaniu nowych graczy.</li>
+<li>Informowanie społeczności o ciekawych wydarzeniach.</li>
+<li>Współpraca przy przygotowywaniu materiałów promocyjnych.</li>
+<li>Budowanie rozpoznawalności projektu.</li>
+</ul>
+<div class="contact">📣 Osoba odpowiedzialna za promocję serwera.</div>
+</article>
+
+</div>
+</div>
+</section>
+</main>
+
+<footer><div class="wrap"><b>HARXSMP</b> · Minecraft · harxSMP.aternos.me<br><small>Administracja · rozwój · technika · bezpieczeństwo · promocja</small></div></footer>
+
+<script>
+const h=document.getElementById("hamb"),m=document.getElementById("menu");
+h.onclick=()=>m.classList.toggle("open");
+document.addEventListener("click",e=>{if(!m.contains(e.target)&&!h.contains(e.target))m.classList.remove("open")});
+</script>
+</body>
+</html>
