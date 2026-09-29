@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>HARX SMP | Serwer Minecraft</title>
+<title>HARX SMP | Minecraft</title>
 
 <style>
 * {
@@ -20,33 +19,31 @@ html {
 body {
     font-family: Arial, Helvetica, sans-serif;
     background: #070707;
-    color: #fff;
+    color: white;
     overflow-x: hidden;
 }
-
-/* TŁO */
 
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     background:
-        radial-gradient(circle at 50% 20%, rgba(255, 190, 0, 0.12), transparent 35%),
-        radial-gradient(circle at 10% 80%, rgba(255, 120, 0, 0.08), transparent 30%);
+        radial-gradient(circle at 50% 10%, rgba(255, 196, 0, .12), transparent 35%),
+        radial-gradient(circle at 10% 80%, rgba(255, 130, 0, .08), transparent 30%);
     pointer-events: none;
     z-index: -1;
 }
 
-/* NAWIGACJA */
+/* NAVBAR */
 
 nav {
     position: fixed;
     top: 0;
     width: 100%;
     height: 70px;
-    background: rgba(5, 5, 5, 0.88);
+    background: rgba(5,5,5,.92);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 200, 0, 0.15);
+    border-bottom: 1px solid rgba(255,196,0,.18);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -67,7 +64,7 @@ nav {
 nav a {
     color: #aaa;
     text-decoration: none;
-    margin-left: 25px;
+    margin-left: 22px;
     font-weight: bold;
     transition: .2s;
 }
@@ -84,7 +81,7 @@ nav a:hover {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 100px 20px 50px;
+    padding: 110px 20px 60px;
 }
 
 .hero-content {
@@ -93,8 +90,8 @@ nav a:hover {
 
 .badge {
     display: inline-block;
-    border: 1px solid rgba(255, 196, 0, .4);
-    background: rgba(255, 196, 0, .08);
+    border: 1px solid rgba(255,196,0,.4);
+    background: rgba(255,196,0,.08);
     color: #ffc400;
     padding: 9px 18px;
     border-radius: 30px;
@@ -105,12 +102,10 @@ nav a:hover {
 
 h1 {
     font-size: clamp(65px, 14vw, 150px);
-    line-height: .9;
+    line-height: .88;
     font-weight: 1000;
     letter-spacing: -6px;
-    text-shadow:
-        0 0 15px rgba(255, 196, 0, .25),
-        0 10px 30px #000;
+    text-shadow: 0 0 25px rgba(255,196,0,.2);
 }
 
 h1 span {
@@ -146,13 +141,12 @@ h1 span {
 
 .btn-main {
     background: #ffc400;
-    color: #090909;
-    box-shadow: 0 0 25px rgba(255, 196, 0, .2);
+    color: #080808;
 }
 
 .btn-main:hover {
     transform: translateY(-3px);
-    box-shadow: 0 0 35px rgba(255, 196, 0, .4);
+    box-shadow: 0 0 30px rgba(255,196,0,.3);
 }
 
 .btn-dark {
@@ -216,12 +210,12 @@ section {
     max-width: 1100px;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
     gap: 20px;
 }
 
 .card {
-    background: linear-gradient(145deg, #121212, #0b0b0b);
+    background: linear-gradient(145deg,#121212,#0b0b0b);
     border: 1px solid #222;
     border-radius: 18px;
     padding: 30px;
@@ -242,6 +236,7 @@ section {
 .card h3 {
     color: #ffc400;
     margin-bottom: 10px;
+    font-size: 25px;
 }
 
 .card p {
@@ -249,37 +244,11 @@ section {
     line-height: 1.5;
 }
 
-/* RANGI */
-
-.rank {
-    position: relative;
-}
-
-.rank h3 {
-    font-size: 25px;
-}
-
-.rank.vip h3 {
-    color: #ffd000;
-}
-
-.rank.svip h3 {
-    color: #55ff55;
-}
-
-.rank.mvip h3 {
-    color: #55ffff;
-}
-
-.rank.owner h3 {
-    color: #ff5555;
-}
-
-.rank ul {
-    list-style: none;
-    margin-top: 20px;
-    color: #aaa;
-    line-height: 2;
+.price {
+    color: #ffc400;
+    font-size: 28px;
+    font-weight: 900;
+    margin: 15px 0;
 }
 
 /* DISCORD */
@@ -287,7 +256,7 @@ section {
 .discord {
     max-width: 900px;
     margin: auto;
-    background: linear-gradient(135deg, #111, #0a0a0a);
+    background: linear-gradient(135deg,#111,#0a0a0a);
     border: 1px solid #282828;
     border-radius: 20px;
     padding: 50px 25px;
@@ -319,7 +288,7 @@ footer strong {
 
 /* MOBILE */
 
-@media (max-width: 700px) {
+@media(max-width:700px) {
 
     nav {
         padding: 0 20px;
@@ -350,8 +319,6 @@ footer strong {
 
 <body>
 
-<!-- NAWIGACJA -->
-
 <nav>
     <div class="logo">HARX<span>SMP</span></div>
 
@@ -359,12 +326,9 @@ footer strong {
         <a href="#start">Start</a>
         <a href="#serwer">Serwer</a>
         <a href="#rangi">Rangi</a>
-        <a href="#discord">Discord</a>
+        <a href="administracja.html">Administracja</a>
     </div>
 </nav>
-
-
-<!-- START -->
 
 <section class="hero" id="start">
     <div class="hero-content">
@@ -382,26 +346,25 @@ footer strong {
         </p>
 
         <div class="buttons">
+
             <button class="btn btn-main" onclick="copyIP()">
                 📋 KOPIUJ IP
             </button>
 
-            <a href="#serwer" class="btn btn-dark">
-                ⚔ INFORMACJE
+            <a href="administracja.html" class="btn btn-dark">
+                👑 ADMINISTRACJA
             </a>
+
         </div>
 
     </div>
 </section>
 
-
-<!-- SERWER -->
-
 <section id="serwer">
 
     <div class="section-title">
         <h2>NASZ <span>SERWER</span></h2>
-        <p>Wszystko, czego potrzebujesz, żeby zacząć grę.</p>
+        <p>Wszystko, czego potrzebujesz, żeby rozpocząć przygodę.</p>
     </div>
 
     <div class="ip-box">
@@ -436,7 +399,7 @@ footer strong {
             <h3>PvP</h3>
             <p>
                 Walcz z innymi graczami
-                i pokaż, kto jest najlepszy.
+                i rozwijaj swoje umiejętności.
             </p>
         </div>
 
@@ -454,7 +417,7 @@ footer strong {
             <h3>Eventy</h3>
             <p>
                 Bierz udział w wydarzeniach
-                i zdobywaj wyjątkowe nagrody.
+                i zdobywaj nagrody.
             </p>
         </div>
 
@@ -462,70 +425,81 @@ footer strong {
 
 </section>
 
-
-<!-- RANGI -->
-
 <section id="rangi">
 
     <div class="section-title">
-        <h2>NASZE <span>RANGI</span></h2>
-        <p>Wybierz rangę i wyróżnij się na serwerze.</p>
+        <h2>CENNIK <span>RANG</span></h2>
+        <p>Wybierz rangę dla siebie i ciesz się dodatkowymi możliwościami.</p>
     </div>
 
     <div class="cards">
 
-        <div class="card rank vip">
-            <div class="icon">⭐</div>
+        <div class="card">
+            <div class="icon">🥉</div>
             <h3>VIP</h3>
-            <p>Podstawowe przywileje i dodatki.</p>
-
-            <ul>
-                <li>✓ Kolorowy nick</li>
-                <li>✓ Dodatkowe komendy</li>
-                <li>✓ Specjalne efekty</li>
-            </ul>
+            <div class="price">5 zł</div>
+            <p>
+                Podstawowe dodatki i przywileje.
+            </p>
         </div>
 
-        <div class="card rank svip">
-            <div class="icon">💎</div>
+        <div class="card">
+            <div class="icon">🥈</div>
             <h3>SVIP</h3>
-            <p>Więcej możliwości dla aktywnych graczy.</p>
-
-            <ul>
-                <li>✓ Wszystko z VIP</li>
-                <li>✓ Więcej możliwości</li>
-                <li>✓ Dodatkowe bonusy</li>
-            </ul>
+            <div class="price">10 zł</div>
+            <p>
+                Więcej możliwości niż VIP.
+            </p>
         </div>
 
-        <div class="card rank mvip">
-            <div class="icon">🔥</div>
-            <h3>MVIP</h3>
-            <p>Najwyższy poziom gracza.</p>
-
-            <ul>
-                <li>✓ Wszystko z SVIP</li>
-                <li>✓ Ekskluzywne dodatki</li>
-                <li>✓ Specjalne bonusy</li>
-            </ul>
+        <div class="card">
+            <div class="icon">🥇</div>
+            <h3>GVIP</h3>
+            <div class="price">20 zł</div>
+            <p>
+                Jeszcze więcej dodatków i udogodnień.
+            </p>
         </div>
+
+        <div class="card">
+            <div class="icon">👑</div>
+            <h3>BOSS</h3>
+            <div class="price">35 zł</div>
+            <p>
+                Najwyższa ranga z największą liczbą przywilejów.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="ip-box" style="margin-top:30px;">
+
+        <p style="color:#777;">METODA PŁATNOŚCI</p>
+
+        <div class="ip" style="font-size:28px;">
+            💳 TYLKO PSC
+        </div>
+
+        <p style="color:#888;">
+            W sprawie zakupu rangi skontaktuj się z administracją HARX SMP.
+        </p>
 
     </div>
 
 </section>
 
-
-<!-- DISCORD -->
-
-<section id="discord">
+<section>
 
     <div class="discord">
 
-        <h2>DOŁĄCZ DO <span style="color:#ffc400;">DISCORDA</span></h2>
+        <h2>
+            DOŁĄCZ DO
+            <span style="color:#ffc400;">DISCORDA</span>
+        </h2>
 
         <p>
-            Poznaj społeczność HARX SMP, odbieraj informacje
-            o eventach i porozmawiaj z innymi graczami.
+            Poznaj społeczność HARX SMP i otrzymuj
+            informacje o serwerze oraz eventach.
         </p>
 
         <a href="#" class="btn btn-main">
@@ -535,9 +509,6 @@ footer strong {
     </div>
 
 </section>
-
-
-<!-- STOPKA -->
 
 <footer>
     <p>
@@ -550,9 +521,7 @@ footer strong {
     </p>
 </footer>
 
-
 <script>
-
 function copyIP() {
 
     const ip = "HarxSMP.aternos.me";
@@ -567,8 +536,7 @@ function copyIP() {
 
     });
 }
-
 </script>
 
 </body>
-  </html>
+    </html>
