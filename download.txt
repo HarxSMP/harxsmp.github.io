@@ -1,0 +1,28 @@
+HARX SMP — rozszerzona strona
+
+Pliki HTML:
+index.html
+serwer.html
+tryby.html
+rangi.html
+aktualnosci.html
+zasady.html
+faq.html
+kontakt.html
+administracja.html
+galeria.html
+mapa.html
+historia.html
+
+Dodatkowe:
+css/style.css
+js/app.js
+
+Adres serwera: harxSMP.aternos.me
+
+Ważne placeholdery do podmiany:
+- kontakt.html: link https://discord.gg/
+- administracja.html: przykładowe nicki
+- zasady.html: przykładowe zasady
+- rangi.html: przykładowe rangi i przywileje
+- aktualnosci.html, galeria.html, historia.html, mapa.html: treść demonstracyjna
